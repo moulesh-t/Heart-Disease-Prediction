@@ -16,10 +16,24 @@ def tune_model(pipe: Pipeline, params: dict, X_train, Y_train):
 
 # Save Model
 def save_model(model ,file_name:str):
-    os.makedirs(name='../models', exist_ok=True)
-    joblib.dump(model,f'../models/{file_name}.pkl')
+    try:
+        os.makedirs('./models', exist_ok=True)
+
+        file_path = f'./models/{file_name}.pkl'
+        
+        # Save the model
+        joblib.dump(model, file_path)
+        
+        # Verify the file was created
+        if os.path.exists(file_path):
+            print(f"✅ Model successfully saved: {file_path}")
+        else:
+            print(f"❌ Failed to save model: {file_path}")
+            
+    except Exception as e:
+        print(f"❌ Error saving model {file_name}: {str(e)}")
     
-# Evaluating Metrics
+# Evaluating Models
 def evaluate_model(model_name:str, scaler_name:str, model, X_test, Y_test) -> dict:
     y_pred = model.predict(X_test)
     metrics = {

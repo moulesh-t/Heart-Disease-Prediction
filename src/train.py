@@ -6,7 +6,7 @@ from helpers import tune_model, save_model, evaluate_model
 
 # Training Models
 def train():
-    data = pd.read_csv('../data/heart.csv')
+    data = pd.read_csv('./data/heart.csv')
     X = data.drop(['target'], axis=1)
     Y = data['target']
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=TEST_SIZE, stratify=Y, random_state=RANDOM_STATE)
@@ -34,7 +34,7 @@ def train():
             
     results_df = pd.DataFrame(results)
     results_df = results_df.sort_values(by='accuracy', ascending=False)
-    results_df.to_csv('../reports/model_evaluation.csv', index=True)
+    results_df.to_csv('./reports/model_evaluation.csv', index=True)
     print("Evaluation Results saved to /reports/model_evaluation.csv")
     
     

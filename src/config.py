@@ -9,7 +9,7 @@ LG_PARAMS = [{
     },
     {
     'model__C': [0.001, 0.01, 0.1, 1, 10],
-    'model__penalty': ['elasticnet','l1','l2',None],
+    'model__penalty': ['l1','l2',None],
     'model__solver': ['saga']
     }]
 
