@@ -23,7 +23,7 @@ def train():
             tuned_model = tune_model(pipe, params, X_train, Y_train)
             metrics = evaluate_model(model_name, scaler_name, tuned_model, X_test, Y_test)
             results.append(metrics)
-            cv_score = tuned_model.best_score_ if hasattr(tuned_model, 'best_score_') else 0
+            cv_score = metrics['accuracy']
             if cv_score > best_score:
                 best_model = tuned_model
                 best_score = cv_score
