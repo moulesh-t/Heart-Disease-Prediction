@@ -27,7 +27,7 @@ def train():
             if cv_score > best_score:
                 best_model = tuned_model
                 best_score = cv_score
-                best_model_filename = f'{model_name}_{scaler_name}_best'
+                best_model_filename = f'{model_name}'
         if best_model:
             save_model(best_model, best_model_filename)
             print(f'Best {model_name} Model Saved: {best_model_filename}.pkl')
